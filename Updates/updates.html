@@ -149,7 +149,7 @@
     // Function to fetch announcements from external text file
     async function fetchAnnouncements() {
       try {
-        const response = await fetch('announcements.txt');
+        const response = await fetch('Announcements.txt');
         const data = await response.text();
         const announcements = data.split('\n').map(line => {
           const [title, content] = line.split(', ');
