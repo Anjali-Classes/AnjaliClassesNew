@@ -5,12 +5,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Flashcards</title>
-
+  
   <!-- MathJax -->
   <script>
     window.MathJax = {
       tex: {
-        inlineMath: [['$', '$'], ['\', '\']]
+        inlineMath: [
+          ['$', '$'],
+          ['\', '\']
+        ]
       },
       startup: {
         ready: () => {
@@ -20,25 +23,26 @@
     };
   </script>
   <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-
+  
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-
+    
     body {
       font-family: Arial, sans-serif;
       height: 100vh;
-      overflow: hidden;
+      overflow-x: hidden;
+      /* Prevent horizontal scrolling on body */
       background-color: #f5f5f5;
       display: flex;
       justify-content: center;
       align-items: center;
       position: relative;
     }
-
+    
     .counter {
       position: absolute;
       top: 20px;
@@ -53,18 +57,22 @@
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
       z-index: 10;
     }
-
+    
     .flashcard-container {
       height: 100vh;
-      width: 100vw;
+      width: 100%;
+      /* Changed from 100vw to 100% to respect parent container */
       overflow-y: scroll;
+      overflow-x: hidden;
+      /* Explicitly disable horizontal scrolling */
       scroll-snap-type: y mandatory;
       scroll-behavior: smooth;
     }
-
+    
     .flashcard {
       min-height: 100vh;
       width: 100%;
+      /* Ensure flashcard takes full width of container */
       scroll-snap-align: center;
       display: flex;
       justify-content: center;
@@ -73,26 +81,29 @@
       cursor: pointer;
       perspective: 1000px;
     }
-
+    
     .card-content {
       padding: 30px;
       border-radius: 15px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       width: 90%;
       max-width: 600px;
+      /* Keep max-width to constrain content */
       text-align: center;
       transition: transform 0.5s ease;
       transform-style: preserve-3d;
       background-color: #fff176;
       position: relative;
       margin: 20px 0;
+      box-sizing: border-box;
+      /* Ensure padding doesn't cause overflow */
     }
-
+    
     .flashcard.flipped .card-content {
       transform: rotateY(180deg);
       background-color: #b9f6ca;
     }
-
+    
     .question,
     .answer {
       color: #333;
@@ -101,14 +112,16 @@
       padding: 20px;
       word-wrap: break-word;
       overflow-wrap: break-word;
+      box-sizing: border-box;
+      /* Prevent text from causing overflow */
     }
-
+    
     .question {
       font-size: clamp(1.5rem, 5vw, 2.5rem);
       font-weight: bold;
       position: relative;
     }
-
+    
     .answer {
       font-size: clamp(1.2rem, 4vw, 2rem);
       color: #2e7d32;
@@ -123,35 +136,35 @@
       transform: rotateY(180deg);
       padding: 30px;
     }
-
+    
     @media (max-width: 768px) {
       .card-content {
         padding: 20px;
         width: 85%;
       }
-
+      
       .question,
       .answer {
         padding: 15px;
       }
     }
-
+    
     @media (max-width: 480px) {
       .card-content {
         width: 90%;
         padding: 15px;
       }
-
+      
       .question,
       .answer {
         padding: 10px;
       }
     }
-
+    
     * {
       -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     }
-
+    
     :target,
     input,
     textarea,
@@ -160,7 +173,7 @@
     a {
       color: rgba(0, 0, 0, 0);
     }
-
+    
     a:focus,
     a:active,
     a:visited {
@@ -172,20 +185,20 @@
 <body>
   <div class="counter">1</div>
   <div class="flashcard-container"></div>
-
+  
   <script>
     const container = document.querySelector('.flashcard-container');
     const counter = document.querySelector('.counter');
     let totalFlashcards = 0;
-
+    
     async function loadFlashcards(file) {
       try {
         const response = await fetch(file);
         const text = await response.text();
         const lines = text.split('\n').filter(line => line.trim() !== '');
-
+        
         totalFlashcards = lines.length;
-
+        
         lines.forEach(line => {
           const [question, answerRaw] = line.split(',').map(item => item.trim());
           if (question && answerRaw) {
@@ -193,46 +206,46 @@
             createFlashcard(question, answer);
           }
         });
-
+        
         MathJax.typesetPromise();
       } catch (error) {
         console.error('Error loading flashcards:', error);
       }
     }
-
+    
     function formatAnswer(answer) {
       const latexSymbols = ['\\', '^', '_', '{', '}', 'frac', 'sqrt', 'int', 'sum'];
       const isLatex = latexSymbols.some(symbol => answer.includes(symbol));
       return isLatex ? `\${answer}\` : answer;
     }
-
+    
     function createFlashcard(question, answer) {
       const flashcard = document.createElement('div');
       flashcard.classList.add('flashcard');
-
+      
       flashcard.innerHTML = `
         <div class="card-content">
           <div class="question">${question}</div>
           <div class="answer">${answer}</div>
         </div>
       `;
-
+      
       flashcard.addEventListener('click', (event) => {
         event.preventDefault();
         flashcard.classList.toggle('flipped');
         MathJax.typesetPromise([flashcard]);
       });
-
+      
       container.appendChild(flashcard);
     }
-
+    
     function updateCounter() {
       const scrollPosition = container.scrollTop;
       const flashcardHeight = window.innerHeight;
       const currentIndex = Math.round(scrollPosition / flashcardHeight) + 1;
       counter.textContent = `${currentIndex} of ${totalFlashcards}`;
     }
-
+    
     window.onload = () => {
       const urlParams = new URLSearchParams(window.location.search);
       const file = urlParams.get('file') || 'flashcards.txt';
