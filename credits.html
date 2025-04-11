@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Credits - Anjali Classes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Variables */
+        :root {
+            --primary-color: #00796b;
+            --background-color: #e0f7fa;
+            --text-color: #00695c;
+            --light-shadow: rgba(0, 0, 0, 0.1);
+            --medium-shadow: rgba(0, 0, 0, 0.15);
+        }
+        
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Header Section */
+        .header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 25px 15px;
+            font-size: 30px;
+            font-weight: 700;
+            width: 100%;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 10px var(--light-shadow);
+            animation: slideDown 0.8s ease-out;
+        }
+
+        /* Content Section */
+        .content {
+            background-color: white;
+            margin: 30px auto;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 6px 18px var(--light-shadow);
+            max-width: 600px;
+            width: 90%;
+            animation: fadeIn 1.2s ease-out;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px var(--medium-shadow);
+        }
+
+        /* Credits Text */
+        .credits-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .credits-text {
+            font-size: 18px;
+            padding: 12px;
+            color: var(--primary-color);
+            border-bottom: 2px solid #e0f7fa;
+            transition: all 0.3s ease;
+            animation: slideRight 0.8s ease-out;
+            animation-fill-mode: both;
+        }
+        
+        .credits-text:hover {
+            background-color: #f5fbfc;
+            border-bottom-color: var(--primary-color);
+            transform: translateX(5px);
+        }
+        
+        .credits-text:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+        
+        .credits-text:nth-child(2) {
+            animation-delay: 0.3s;
+        }
+        
+        .credits-text:nth-child(3) {
+            animation-delay: 0.5s;
+        }
+        
+        .credits-text a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            padding-bottom: 2px;
+        }
+        
+        .credits-text a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+        
+        .credits-text a:hover::after {
+            width: 100%;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes slideRight {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 480px) {
+            .header {
+                font-size: 24px;
+                padding: 20px 10px;
+            }
+            
+            .content {
+                padding: 20px;
+                margin: 20px auto;
+            }
+            
+            .credits-text {
+                font-size: 16px;
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        CREDITS
+    </div>
+
+    <div class="content">
+        <div class="credits-container">
+            <div class="credits-text">UI Design by: Adarsh Dubey</div>
+            <div class="credits-text">Developed by: Kartik Choudhary</div>
+            <div class="credits-text">Hosted by: <a href="https://pages.github.com/" target="_blank">GitHub Pages</a></div>
+        </div>
+    </div>
+</body>
+</html>

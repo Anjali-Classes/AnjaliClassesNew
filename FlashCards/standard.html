@@ -1,0 +1,92 @@
+<!DOCTYPE html><html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose Your Class</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');body {
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(135deg, #007BFF, #00D4FF);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        text-align: center;
+        color: white;
+        overflow: hidden;
+    }
+
+    .container {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 40px;
+        border-radius: 15px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        backdrop-filter: blur(10px);
+        opacity: 0;
+        transform: translateY(-50px);
+        animation: fadeIn 1s ease-out forwards;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(-50px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    h1 {
+        font-size: 36px;
+        margin-bottom: 20px;
+    }
+
+    .button {
+        display: inline-block;
+        padding: 15px 30px;
+        margin: 20px;
+        font-size: 20px;
+        color: white;
+        background: linear-gradient(135deg, #ff416c, #ff4b2b);
+        text-decoration: none;
+        border-radius: 10px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        box-shadow: 0 4px 15px rgba(255, 75, 43, 0.3);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .button:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 20px rgba(255, 75, 43, 0.5);
+    }
+
+    .button::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.2);
+        opacity: 0;
+        transition: opacity 0.3s;
+    }
+
+    .button:hover::after {
+        opacity: 1;
+    }
+</style>
+
+</head>
+<body>
+    <div class="container">
+        <h1>Select Your Class</h1>
+        <a href="10th choice.html" class="button">Class 10th</a>
+        <a href="12th choice.html" class="button">Class 12th</a>
+    </div>
+</body>
+</html>

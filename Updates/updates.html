@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Announcements</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    /* General Styling */
+    body,
+    html {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom, #e0f7fa, #ffffff);
+      color: #333;
+      overflow-x: hidden;
+      /* Prevents horizontal scrolling */
+    }
+    
+    /* Header */
+    .header {
+      background-color: #005b47;
+      /* Darker green */
+      color: white;
+      text-align: center;
+      padding: 30px;
+      /* Increased padding */
+      font-size: 32px;
+      /* Increased font size */
+      font-weight: 600;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+    }
+    
+    /* Announcement Container */
+    .announcement-container {
+      margin: 100px auto 20px;
+      max-width: 800px;
+      padding: 10px;
+    }
+    
+    /* Individual Announcement */
+    .announcement {
+      background-color: #f9f9f9;
+      /* Soft background color */
+      border-radius: 10px;
+      padding: 20px;
+      margin: 20px 0;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 0.8s ease-in-out forwards;
+      text-align: center;
+      /* Centered text */
+    }
+    
+    .announcement h2 {
+      font-size: 24px;
+      /* Increased font size for date */
+      margin-bottom: 10px;
+      color: #005b47;
+      /* Darker green for date */
+      font-weight: bold;
+      /* Bold date */
+    }
+    
+    .announcement p {
+      font-size: 18px;
+      /* Increased font size for content */
+      color: #555;
+    }
+    
+    /* Footer */
+    .footer {
+      background-color: #00796b;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      /* Reduced footer height */
+      position: relative;
+      bottom: 0;
+      width: 100%;
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 600px) {
+      .header {
+        font-size: 26px;
+        /* Adjusted for smaller screens */
+        padding: 20px;
+      }
+      
+      .announcement-container {
+        margin-top: 80px;
+        padding: 10px;
+        width: 90%;
+        /* Ensures it fits within the screen */
+      }
+      
+      .announcement {
+        padding: 15px;
+        margin: 10px 0;
+      }
+      
+      .announcement h2 {
+        font-size: 20px;
+        /* Adjusted for smaller screens */
+      }
+      
+      .announcement p {
+        font-size: 16px;
+        /* Adjusted for smaller screens */
+      }
+    }
+    
+    /* Scroll Animation */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  
+  <!-- Header -->
+  <div class="header">📢 Announcements</div>
+  
+  <!-- Announcement Container -->
+  <div class="announcement-container" id="announcements"></div>
+  
+  <!-- Footer -->
+  <div class="footer">© 2025 All Rights Reserved | Anjali Classes</div>
+  
+  <!-- JavaScript to Fetch Announcements from External File -->
+  <script>
+    // Function to fetch announcements from external text file
+    async function fetchAnnouncements() {
+      try {
+        const response = await fetch('announcements.txt');
+        const data = await response.text();
+        const announcements = data.split('\n').map(line => {
+          const [title, content] = line.split(', ');
+          return { title, content };
+        });
+        
+        // Get Announcement Container
+        const announcementContainer = document.getElementById("announcements");
+        
+        // Generate Announcements Dynamically
+        announcements.forEach((announcement, index) => {
+          const announcementDiv = document.createElement("div");
+          announcementDiv.classList.add("announcement");
+          announcementDiv.style.animationDelay = `${index * 0.2}s`; // Adds delay for staggered animation
+          announcementDiv.innerHTML = `
+                        <h2>${announcement.title}</h2>
+                        <p>${announcement.content}</p>
+                    `;
+          announcementContainer.appendChild(announcementDiv);
+        });
+      } catch (error) {
+        console.error('Error fetching announcements:', error);
+      }
+    }
+    
+    // Call the function to fetch announcements
+    fetchAnnouncements();
+    
+    // Function to show the content after a delay
+    document.addEventListener("DOMContentLoaded", function() {
+      // Hide the content initially
+      const contentWrapper = document.querySelector('.content-wrapper');
+      
+      if (contentWrapper) {
+        contentWrapper.style.display = 'none';
+        
+        // Show content after 2 seconds
+        setTimeout(() => {
+          contentWrapper.style.display = 'block';
+        }, 2000);
+      }
+    });
+  </script>
+  
+</body>
+
+</html>

@@ -1,2 +1,2 @@
-# AnjaliClassesNew
-New webpage
+# AnjaliClasses
+Classes website
