@@ -7,7 +7,88 @@
   <title>Anjali Classes</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
+    /* Video Intro Styles */
+    #video-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background: black;
+      z-index: 9999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    #intro-video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    /* Skip button */
+    .skip-btn {
+      position: absolute;
+      bottom: 30px;
+      right: 30px;
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      z-index: 10000;
+      transition: all 0.3s ease;
+    }
+    
+    .skip-btn:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: scale(1.05);
+    }
+    
+    /* Loading text */
+    .loading-text {
+      position: absolute;
+      color: white;
+      font-family: 'Poppins', sans-serif;
+      font-size: 18px;
+      display: none;
+    }
+    
+    /* Hide main content initially */
+    #main-content {
+      display: none;
+      animation: fadeIn 0.5s ease-out;
+    }
+    
+    /* Rest of your existing styles remain exactly the same */
     /* Base Styles */
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      background-color: #f9f9f9;
+      color: #333;
+      overflow: hidden;
+    }
+    
+    .header {
+      background-color: #FF7F50;
+      color: white;
+      padding: 20px;
+      font-size: 28px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* ... (all your existing styles remain exactly the same) ... */
     body {
       font-family: 'Poppins', sans-serif;
       margin: 0;
@@ -17,7 +98,6 @@
       color: #333;
     }
     
-    /* Header Section */
     .header {
       background-color: #FF7F50;
       color: white;
@@ -47,7 +127,6 @@
       animation: fadeIn 1.2s;
     }
     
-    /* Motto Styling */
     .motto {
       font-size: 18px;
       font-style: italic;
@@ -69,7 +148,6 @@
       transition: opacity 1s ease-in-out;
     }
     
-    /* Content Section */
     .content {
       background-color: white;
       margin: 20px auto;
@@ -81,7 +159,6 @@
       animation: fadeIn 1.2s;
     }
     
-    /* Buttons Section */
     .buttons {
       display: flex;
       flex-direction: column;
@@ -113,8 +190,6 @@
       touch-action: manipulation;
     }
     
-    
-    
     .btn:hover,
     .btn1:hover {
       transform: translateY(-3px);
@@ -129,7 +204,6 @@
     
     .btn.blue {
       background-color: #007BFF;
-      /* Blue color for Flashcards button */
     }
     
     .btn::after {
@@ -157,7 +231,6 @@
       transform: scale(1.05);
     }
     
-    /* Social Links */
     .social {
       background-color: white;
       margin: 20px auto;
@@ -179,7 +252,6 @@
       justify-content: center;
       gap: 25px;
       flex-direction: column;
-      /* Stack vertically */
     }
     
     .social a {
@@ -202,10 +274,6 @@
       color: #E67300;
     }
     
-    /* Contact Section */
-    
-    
-    /* Credits Link */
     .credits {
       font-size: 17px;
       color: #FF7F50;
@@ -222,7 +290,6 @@
       color: #FF7F50;
     }
     
-    /* Animations */
     @keyframes fadeIn {
       from {
         opacity: 0;
@@ -235,7 +302,6 @@
       }
     }
     
-    /* Responsive Styles */
     @media only screen and (max-width: 480px) {
       .header {
         font-size: 24px;
@@ -293,47 +359,127 @@
 </head>
 
 <body>
-  <div class="header">
-    <img src="raw1-1720267162424.png" alt="Anjali Classes">
-    ANJALI CLASSES
+  <!-- Intro Video Section -->
+  <div id="video-container">
+    <video id="intro-video" autoplay muted playsinline>
+      <source src="intro.mp4" type="video/mp4">
+      Your browser does not support HTML5 video.
+    </video>
+    <div class="loading-text"></div>
+    <button class="skip-btn">Skip Intro</button>
   </div>
-  <div class="sub-header">कर्तव्य, कर्म और कारण</div>
-  <div class="motto" id="random-motto"><span id="motto-text"></span></div>
   
-  <div class="content">
-    <div class="buttons">
-      <a href="Updates/updates.html" class="btn">New Update</a>
-      <a href="Notes/notes.html" class="btn">Notes</a>
-      <a href="feestructure.html" class="btn">Fee Structure</a>
-      <a href="FlashCards/standard.html" class="btn">Flashcards</a>
+  <!-- Main Site Content (wrapped in main-content div) -->
+  <div id="main-content">
+    <!-- All your existing content remains exactly the same -->
+    <div class="header">
+      <img src="raw1-1720267162424.png" alt="Anjali Classes">
+      ANJALI CLASSES
     </div>
-  </div>
-  
-  <div class="social">
-    <p>Follow us on social media:</p>
-    <div class="social-links">
-      <a href="https://youtube.com/@anjaliclasses3016" target="_blank">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg" alt="YouTube Logo">
-        YouTube Anjali Classes
-      </a>
-      <a href="https://t.me/+cQ_VAr7zMEs2ZWZl" target="_blank">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram Logo">
-        Telegram Anjali Classes
-      </a>
-      <a href="Anjali_Classes_Signed.apk">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/d/d7/Android_robot.svg" alt="Android Logo">
-        Download Our App</a>
-      
-      
+    <div class="sub-header">कर्तव्य, कर्म और कारण</div>
+    <div class="motto" id="random-motto"><span id="motto-text"></span></div>
+    
+    <div class="content">
+      <div class="buttons">
+        <a href="Updates/updates.html" class="btn">New Update</a>
+        <a href="Notes/notes.html" class="btn">Notes</a>
+        <a href="feestructure.html" class="btn">Fee Structure</a>
+        <a href="FlashCards/standard.html" class="btn">Flashcards</a>
+      </div>
     </div>
-  </div>
-  
-  
-  <div class="credits">
-    <a href="credits.html">Credits</a>
+    
+    <div class="social">
+      <p>Follow us on social media:</p>
+      <div class="social-links">
+        <a href="https://youtube.com/@anjaliclasses3016" target="_blank">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg" alt="YouTube Logo">
+          YouTube Anjali Classes
+        </a>
+        <a href="https://t.me/+cQ_VAr7zMEs2ZWZl" target="_blank">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram Logo">
+          Telegram Anjali Classes
+        </a>
+        <a href="Anjali_Classes_Signed.apk">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/d/d7/Android_robot.svg" alt="Android Logo">
+          Download Our App</a>
+      </div>
+    </div>
+    
+    <div class="credits">
+      <a href="credits.html">Credits</a>
+    </div>
   </div>
   
   <script>
+    // Enhanced Video Intro Functionality
+    const video = document.getElementById('intro-video');
+    const mainContent = document.getElementById('main-content');
+    const videoContainer = document.getElementById('video-container');
+    const skipBtn = document.querySelector('.skip-btn');
+    const loadingText = document.querySelector('.loading-text');
+    
+    // Check if we should show the video (only on fresh load or refresh)
+    if (sessionStorage.getItem('videoShown') !== 'true') {
+      // First time in this session - show video and mark as shown
+      sessionStorage.setItem('videoShown', 'true');
+      initVideo();
+    } else {
+      // Already shown in this session - skip video
+      skipVideo();
+    }
+    
+    function initVideo() {
+      // Show loading if video takes time to start
+      const loadingTimeout = setTimeout(() => {
+        loadingText.style.display = 'block';
+      }, 2000);
+      
+      // Function to show main content and hide video
+      function showMainContent() {
+        clearTimeout(loadingTimeout);
+        videoContainer.style.opacity = '1';
+        
+        // Smooth transition
+        videoContainer.style.transition = 'opacity 0.5s ease-out';
+        videoContainer.style.opacity = '0';
+        
+        setTimeout(() => {
+          videoContainer.style.display = 'none';
+          mainContent.style.display = 'block';
+          document.body.style.overflow = 'auto';
+        }, 500);
+      }
+      
+      // Event listener for video end
+      video.addEventListener('ended', showMainContent);
+      
+      // Skip button functionality
+      skipBtn.addEventListener('click', () => {
+        video.pause();
+        showMainContent();
+      });
+      
+      // Handle video errors
+      video.addEventListener('error', () => {
+        console.error('Video failed to load');
+        loadingText.textContent = 'Video unavailable. Loading site...';
+        setTimeout(showMainContent, 1500);
+      });
+      
+      // If video metadata loads, hide loading text
+      video.addEventListener('loadedmetadata', () => {
+        clearTimeout(loadingTimeout);
+        loadingText.style.display = 'none';
+      });
+    }
+    
+    function skipVideo() {
+      videoContainer.style.display = 'none';
+      mainContent.style.display = 'block';
+      document.body.style.overflow = 'auto';
+    }
+    
+    // Original Scripts
     // Quotes List
     let quotes = [];
     
@@ -345,7 +491,7 @@
           throw new Error('Network response was not ok');
         }
         const text = await response.text();
-        quotes = text.split('\n').map(quote => quote.trim()).filter(quote => quote); // Split by new line and trim whitespace
+        quotes = text.split('\n').map(quote => quote.trim()).filter(quote => quote);
         setInitialMotto();
       } catch (error) {
         console.error('Error fetching quotes:', error);
@@ -356,34 +502,27 @@
     function setInitialMotto() {
       const initialIndex = Math.floor(Math.random() * quotes.length);
       document.getElementById('motto-text').textContent = quotes[initialIndex];
-      setInterval(changeMotto, 5000); // Change motto every 5 seconds
+      setInterval(changeMotto, 5000);
     }
     
     // Function to change the motto
     function changeMotto() {
       const mottoText = document.getElementById('motto-text');
-      
-      // Fade out the text
       mottoText.style.opacity = 0;
-      
       setTimeout(() => {
         const randomIndex = Math.floor(Math.random() * quotes.length);
         mottoText.textContent = quotes[randomIndex];
-        
-        // Fade back in
         mottoText.style.opacity = 1;
-      }, 1000); // Wait for fade out to complete before changing text
+      }, 1000);
     }
     
     // Function to handle button click
     function handleButtonClick(event) {
-      const button = event.currentTarget; // Get the clicked button
-      button.classList.add('clicked'); // Add the clicked class
-      
-      // Remove the class after a short delay to reset the button
+      const button = event.currentTarget;
+      button.classList.add('clicked');
       setTimeout(() => {
         button.classList.remove('clicked');
-      }, 100); // Adjust the delay as needed
+      }, 100);
     }
     
     // Add click event listeners to buttons
