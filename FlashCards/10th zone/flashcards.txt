@@ -1,4 +1,3 @@
-Class 10th Gravitation
 What is Gravitation?, Gravitation is the force that pulls objects with mass towards each other.
 Who discover gravitation?, Sir Isaac Newton
 Book name in which Newton gave theory of gravity?, Principia
@@ -14,7 +13,7 @@ What is Kepler first law?, The orbit of a planet is an ellipse with the Sun at o
 What is Kepler second law?, The line joining the planet and the Sun sweeps equal areas in equal intervals of time.
 What is Kepler third law?, T^2 \propto r^3
 What is limitation of Kepler laws?, He had no explanation as to why planets obey these laws.
-What is Newton's Universal Law of Gravitation?, Every object in the Universe attracts every other object with a definite force. This force is directly proportional to the product of the masses of the two objects and is inversely proportional to the square of the distance between them. F = GxM1xM2/D²
+What is Newton's Universal Law of Gravitation?, Every object in the Universe attracts every other object with a definite force. This force is directly proportional to the product of the masses of the two objects and is inversely proportional to the square of the distance between them.
 What is universal gravitational constant?, G is universal gravitational constant whose value is 6.673 x 10^-11 N M²/Kg²
 Which scientist measures the experimental value of G?, Henry Canvendish
 If the mass of a body increases by factor of 2 then force on them will be?, Increase by 4 times
