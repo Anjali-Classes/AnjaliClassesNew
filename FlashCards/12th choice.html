@@ -1,117 +1,158 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chapter Selection</title>
-  <style>
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #007BFF, #00D4FF);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-      text-align: center;
-      color: white;
-      overflow: hidden; /* Prevent body overflow */
-    }
-    
-    .container {
-      background: rgba(255, 255, 255, 0.1);
-      padding: 20px; /* Reduced padding for mobile */
-      border-radius: 15px;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-      backdrop-filter: blur(10px);
-      width: 90vw; /* Full width with some margin */
-      height: 90vh; /* Full height with some margin */
-      max-width: 500px; /* Max width for larger screens */
-      max-height: 90vh; /* Max height for larger screens */
-      overflow-y: auto; /* Enable scrolling if content overflows */
-      opacity: 0;
-      transform: translateY(-50px);
-      animation: fadeIn 1s ease-out forwards;
-    }
-    
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(-50px);
-      }
-      
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    
-    h2 {
-      font-size: 2rem; /* Responsive font size */
-      margin-bottom: 20px;
-    }
-    
-    button {
-      display: block;
-      width: 100%;
-      padding: 15px;
-      margin: 10px 0;
-      font-size: 1.2rem; /* Responsive font size */
-      color: white;
-      background: linear-gradient(135deg, #ff416c, #ff4b2b);
-      border: none;
-      border-radius: 10px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      box-shadow: 0 4px 15px rgba(255, 75, 43, 0.3);
-      cursor: pointer;
-      white-space: normal; /* Allow text to wrap */
-      min-height: 60px; /* Minimum height for buttons */
-    }
-    
-    button:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 6px 20px rgba(255, 75, 43, 0.5);
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Select a chapter to study flashcards for Class 10th or 12th.">
+    <meta name="keywords" content="education, flashcards, chapters, learning, Class 10th, Class 12th">
+    <title>Chapter Selection</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    /* Media Queries for further responsiveness */
-    @media (max-width: 600px) {
-      h2 {
-        font-size: 1.5rem; /* Smaller font size for mobile */
-      }
-      
-      button {
-        font-size: 1rem; /* Smaller button font size for mobile */
-        padding: 12px; /* Adjust padding for mobile */
-      }
-    }
-  </style>
-  
+        body {
+            font-family: 'Poppins', sans-serif, Arial, sans-serif;
+            background: linear-gradient(135deg, #007BFF, #00D4FF);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            text-align: center;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(6px);
+            max-width: 800px;
+            width: 90%;
+            margin: 2rem auto;
+            opacity: 0;
+            transform: translateY(-2rem);
+            animation: fadeIn 0.8s ease-out forwards;
+            transition: transform 0.3s ease;
+        }
+
+        .container:hover {
+            transform: translateY(-2.5rem);
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h2 {
+            font-size: clamp(1.5rem, 5vw, 2rem);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        nav {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        button {
+            padding: 0.8rem;
+            font-size: clamp(0.9rem, 2.5vw, 1rem);
+            color: #fff;
+            background: linear-gradient(135deg, #ff6b6b, #ff8e53);
+            border: none;
+            border-radius: 0.6rem;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 0.2rem 0.8rem rgba(255, 107, 107, 0.3);
+        }
+
+        button:hover {
+            transform: translateY(-0.2rem) scale(1.02);
+            box-shadow: 0 0.3rem 1rem rgba(255, 107, 107, 0.5);
+        }
+
+        button::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.3),
+                transparent
+            );
+            transition: left 0.3s ease;
+        }
+
+        button:hover::after {
+            left: 100%;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1.5rem;
+                margin: 1rem auto;
+            }
+
+            nav {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h2 {
+                font-size: 1.3rem;
+            }
+
+            button {
+                padding: 0.7rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
 </head>
-
 <body>
-  <div class="container">
-    <h2>Select a Chapter</h2>
-    <div id="chapter-buttons"></div>
-  </div>
-  <script>
-    // List of available flashcard files
-    const chapters = {
-      "No chapters yet": "l",
-    };
-    
-    const container = document.getElementById("chapter-buttons");
-    
-    // Generate buttons dynamically
-    for (const [chapter, file] of Object.entries(chapters)) {
-      const btn = document.createElement("button");
-      btn.textContent = chapter;
-      btn.onclick = () => {
-        window.location.href = `Flashcards.html?file=${file}`;
-      };
-      container.appendChild(btn);
-    }
-  </script>
-</body>
+    <div class="container">
+        <h2>Select a Chapter</h2>
+        <nav id="chapter-buttons"></nav>
+    </div>
+    <script>
+        // List of chapters (corrected and consolidated)
+        const chapters = {
+            "Solution": "12th zone/solutions.txt",
+        };
 
+        const container = document.getElementById("chapter-buttons");
+
+        // Generate buttons dynamically
+        for (const [chapter, file] of Object.entries(chapters)) {
+            const btn = document.createElement("button");
+            btn.textContent = chapter;
+            btn.setAttribute("aria-label", `Select chapter ${chapter}`);
+            btn.onclick = () => {
+                try {
+                    window.location.href = `Flashcards.html?file=${encodeURIComponent(file)}`;
+                } catch (error) {
+                    console.error(`Error navigating to ${file}:`, error);
+                    alert("Unable to load chapter. Please try again.");
+                }
+            };
+            container.appendChild(btn);
+        }
+    </script>
+</body>
 </html>
