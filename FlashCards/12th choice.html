@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Select a chapter to study flashcards for Class 10th or 12th.">
-    <meta name="keywords" content="education, flashcards, chapters, learning, Class 10th, Class 12th">
-    <title>Chapter Selection</title>
+    <meta name="description" content="Select a chapter to study flashcards for Physics, Chemistry, Maths, or Biology for Class 10th or 12th.">
+    <meta name="keywords" content="education, flashcards, chapters, learning, Physics, Chemistry, Maths, Biology, Class 10th, Class 12th">
+    <title>Chapter Selection - Physics, Chemistry, Maths, Biology</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
@@ -53,10 +53,20 @@
             }
         }
 
+        h1 {
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
         h2 {
             font-size: clamp(1.5rem, 5vw, 2rem);
-            margin-bottom: 1.5rem;
+            margin: 1.5rem 0;
             font-weight: 600;
+        }
+
+        .subject-section {
+            margin-bottom: 2rem;
         }
 
         nav {
@@ -75,6 +85,7 @@
             cursor: pointer;
             transition: transform 0.2s ease, box-shadow 0.2s ease;
             box-shadow: 0 0.2rem 0.8rem rgba(255, 107, 107, 0.3);
+            position: relative;
         }
 
         button:hover {
@@ -114,6 +125,10 @@
         }
 
         @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+
             h2 {
                 font-size: 1.3rem;
             }
@@ -127,32 +142,78 @@
 </head>
 <body>
     <div class="container">
-        <h2>Select a Chapter</h2>
-        <nav id="chapter-buttons"></nav>
+        <h1>Study Flashcards</h1>
+        <div class="subject-section">
+            <h2>Physics</h2>
+            <nav id="physics-buttons"></nav>
+        </div>
+        <div class="subject-section">
+            <h2>Chemistry</h2>
+            <nav id="chemistry-buttons"></nav>
+        </div>
+        <div class="subject-section">
+            <h2>Mathematics</h2>
+            <nav id="maths-buttons"></nav>
+        </div>
+        <div class="subject-section">
+            <h2>Biology</h2>
+            <nav id="biology-buttons"></nav>
+        </div>
     </div>
     <script>
-        // List of chapters (corrected and consolidated)
+        // List of chapters for each subject (placeholders, update as needed)
         const chapters = {
-            "Solution": "12th zone/Solution Class 12th.txt",
+            physics: {
+                "No chapters available yet.": "12th zone/physics/mechanics.txt",
+            },
+            chemistry: {
+                "Solution": "12th zone/solutions Class 12th.txt",
+                // Add more chapters like "Atomic Structure": "path/to/file"
+            },
+            maths: {
+                "No chapters available yet.": "12th zone/maths/algebra.txt",
+                // Add more chapters like "Calculus": "path/to/file"
+            },
+            biology: {
+                "No chapters available yet.": "",
+                
+            }
         };
 
-        const container = document.getElementById("chapter-buttons");
+        // Function to generate buttons for a subject
+        function generateButtons(subject, containerId) {
+            const container = document.getElementById(containerId);
+            const subjectChapters = chapters[subject];
 
-        // Generate buttons dynamically
-        for (const [chapter, file] of Object.entries(chapters)) {
-            const btn = document.createElement("button");
-            btn.textContent = chapter;
-            btn.setAttribute("aria-label", `Select chapter ${chapter}`);
-            btn.onclick = () => {
-                try {
-                    window.location.href = `Flashcards.html?file=${encodeURIComponent(file)}`;
-                } catch (error) {
-                    console.error(`Error navigating to ${file}:`, error);
-                    alert("Unable to load chapter. Please try again.");
-                }
-            };
-            container.appendChild(btn);
+            if (Object.keys(subjectChapters).length === 0) {
+                const message = document.createElement("p");
+                message.textContent = "No chapters available yet.";
+                message.style.color = "#fff";
+                container.appendChild(message);
+                return;
+            }
+
+            for (const [chapter, file] of Object.entries(subjectChapters)) {
+                const btn = document.createElement("button");
+                btn.textContent = chapter;
+                btn.setAttribute("aria-label", `Select chapter ${chapter}`);
+                btn.onclick = () => {
+                    try {
+                        window.location.href = `Flashcards.html?file=${encodeURIComponent(file)}`;
+                    } catch (error) {
+                        console.error(`Error navigating to ${file}:`, error);
+                        alert("Unable to load chapter. Please try again.");
+                    }
+                };
+                container.appendChild(btn);
+            }
         }
+
+        // Generate buttons for each subject
+        generateButtons("physics", "physics-buttons");
+        generateButtons("chemistry", "chemistry-buttons");
+        generateButtons("maths", "maths-buttons");
+        generateButtons("biology", "biology-buttons");
     </script>
 </body>
 </html>
