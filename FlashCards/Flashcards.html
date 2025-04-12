@@ -1,222 +1,242 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Flashcards</title> <!-- MathJax -->
-  <script>
-    window.MathJax = {
-      tex: {
-        inlineMath: [
-          ['\', '\']
-        ]
-      },
-      startup: {
-        ready: () => {
-          MathJax.startup.defaultReady();
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Select a chapter to study flashcards for Physics, Chemistry, Maths, or Biology for Class 10th or 12th.">
+    <meta name="keywords" content="education, flashcards, chapters, learning, Physics, Chemistry, Maths, Biology, Class 10th, Class 12th">
+    <title>Chapter Selection - Physics, Chemistry, Maths, Biology</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-      }
-    };
-  </script>
-  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    
-    body {
-      font-family: Arial, sans-serif;
-      height: 100vh;
-      overflow-x: hidden;
-      background-color: #f5f5f5;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: relative;
-    }
-    
-    .counter {
-      position: absolute;
-      top: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 2rem;
-      font-weight: bold;
-      color: #333;
-      background-color: rgba(255, 255, 255, 0.8);
-      padding: 10px 20px;
-      border-radius: 10px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-      z-index: 10;
-    }
-    
-    .flashcard-container {
-      height: 100vh;
-      width: 100%;
-      overflow-y: scroll;
-      overflow-x: hidden;
-      scroll-snap-type: y mandatory;
-      scroll-behavior: smooth;
-    }
-    
-    .flashcard {
-      min-height: 100vh;
-      width: 100%;
-      scroll-snap-align: center;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-      cursor: pointer;
-      perspective: 1000px;
-    }
-    
-    .card-content {
-      padding: 30px;
-      border-radius: 15px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      width: fit-content;
-      max-width: 90vw;
-      max-height: 90vh;
-      text-align: center;
-      transition: transform 0.5s ease;
-      transform-style: preserve-3d;
-      background-color: #fff176;
-      position: relative;
-      margin: 20px 0;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-    
-    .flashcard.flipped .card-content {
-      transform: rotateY(180deg);
-      background-color: #b9f6ca;
-    }
-    
-    .question,
-    .answer {
-      color: #333;
-      backface-visibility: hidden;
-      width: 100%;
-      padding: 20px;
-      word-wrap: break-word;
-      overflow-wrap: break-word;
-      font-size: clamp(1.2rem, 2vw, 2rem);
-    }
-    
-    .question {
-      font-weight: bold;
-      position: relative;
-    }
-    
-    .answer {
-      color: #2e7d32;
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transform: rotateY(180deg);
-    }
-    
-    * {
-      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    }
-    
-    :target,
-    input,
-    textarea,
-    button,
-    select,
-    a {
-      color: rgba(0, 0, 0, 0);
-    }
-    
-    a:focus,
-    a:active,
-    a:visited {
-      outline: none;
-    }
-  </style>
+
+        body {
+            font-family: 'Poppins', sans-serif, Arial, sans-serif;
+            background: linear-gradient(135deg, #007BFF, #00D4FF);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            text-align: center;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(6px);
+            max-width: 800px;
+            width: 90%;
+            margin: 2rem auto;
+            opacity: 0;
+            transform: translateY(-2rem);
+            animation: fadeIn 0.8s ease-out forwards;
+            transition: transform 0.3s ease;
+        }
+
+        .container:hover {
+            transform: translateY(-2.5rem);
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        h2 {
+            font-size: clamp(1.5rem, 5vw, 2rem);
+            margin: 1.5rem 0;
+            font-weight: 600;
+        }
+
+        .subject-section {
+            margin-bottom: 2rem;
+        }
+
+        nav {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        button {
+            padding: 0.8rem;
+            font-size: clamp(0.9rem, 2.5vw, 1rem);
+            color: #fff;
+            background: linear-gradient(135deg, #ff6b6b, #ff8e53);
+            border: none;
+            border-radius: 0.6rem;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 0.2rem 0.8rem rgba(255, 107, 107, 0.3);
+            position: relative;
+        }
+
+        button:hover {
+            transform: translateY(-0.2rem) scale(1.02);
+            box-shadow: 0 0.3rem 1rem rgba(255, 107, 107, 0.5);
+        }
+
+        button::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.3),
+                transparent
+            );
+            transition: left 0.3s ease;
+        }
+
+        button:hover::after {
+            left: 100%;
+        }
+
+        button.disabled {
+            background: linear-gradient(135deg, #999, #ccc);
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+
+        button.disabled:hover {
+            transform: none;
+            box-shadow: none;
+        }
+
+        button.disabled::after {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1.5rem;
+                margin: 1rem auto;
+            }
+
+            nav {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            h2 {
+                font-size: 1.3rem;
+            }
+
+            button {
+                padding: 0.7rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
 </head>
-
 <body>
-  <div class="counter">1</div>
-  <div class="flashcard-container"></div>
-  <script>
-    const container = document.querySelector('.flashcard-container');
-    const counter = document.querySelector('.counter');
-    let totalFlashcards = 0;
-    
-    async function loadFlashcards(file) {
-      try {
-        const response = await fetch(file);
-        const text = await response.text();
-        const lines = text.split('\n').filter(line => line.trim() !== '');
-        totalFlashcards = lines.length;
-        
-        lines.forEach(line => {
-          const [question, answerRaw] = line.split(',').map(item => item.trim());
-          if (question && answerRaw) {
-            const answer = formatAnswer(answerRaw);
-            createFlashcard(question, answer);
-          }
-        });
-        
-        MathJax.typesetPromise();
-      } catch (error) {
-        console.error('Error loading flashcards:', error);
-      }
-    }
-    
-    function formatAnswer(answer) {
-      const latexSymbols = ['\\', '^', '_', '{', '}', 'frac', 'sqrt', 'int', 'sum'];
-      const isLatex = latexSymbols.some(symbol => answer.includes(symbol));
-      return isLatex ? `\${answer}\` : answer;
-    }
-    
-    function createFlashcard(question, answer) {
-      const flashcard = document.createElement('div');
-      flashcard.classList.add('flashcard');
-      
-      flashcard.innerHTML = `
-        <div class="card-content">
-          <div class="question">${question}</div>
-          <div class="answer">${answer}</div>
+    <div class="container">
+        <h1>Study Flashcards</h1>
+        <div class="subject-section">
+            <h2>Physics</h2>
+            <nav id="physics-buttons"></nav>
         </div>
-      `;
-      
-      flashcard.addEventListener('click', (event) => {
-        event.preventDefault();
-        flashcard.classList.toggle('flipped');
-        MathJax.typesetPromise([flashcard]);
-      });
-      
-      container.appendChild(flashcard);
-    }
-    
-    function updateCounter() {
-      const scrollPosition = container.scrollTop;
-      const flashcardHeight = window.innerHeight;
-      const currentIndex = Math.round(scrollPosition / flashcardHeight) + 1;
-      counter.textContent = `${currentIndex} of ${totalFlashcards}`;
-    }
-    
-    window.onload = () => {
-      const urlParams = new URLSearchParams(window.location.search);
-      const file = urlParams.get('file') || 'flashcards.txt';
-      loadFlashcards(file);
-      container.addEventListener('scroll', updateCounter);
-    };
-  </script>
-</body>
+        <div class="subject-section">
+            <h2>Chemistry</h2>
+            <nav id="chemistry-buttons"></nav>
+        </div>
+        <div class="subject-section">
+            <h2>Mathematics</h2>
+            <nav id="maths-buttons"></nav>
+        </div>
+        <div class="subject-section">
+            <h2>Biology</h2>
+            <nav id="biology-buttons"></nav>
+        </div>
+    </div>
+    <script>
+        // List of chapters for each subject
+        const chapters = {
+            physics: {
+                "No chapters available yet.": "",
+            },
+            chemistry: {
+                "Solution": "12th zone/Solution Class 12th.txt",
+            },
+            maths: {
+                "No chapters available yet.": "",
+            },
+            biology: {
+                "No chapters available yet.": "",
+            }
+        };
 
+        // Function to generate buttons for a subject
+        function generateButtons(subject, containerId) {
+            const container = document.getElementById(containerId);
+            const subjectChapters = chapters[subject];
+
+            if (Object.keys(subjectChapters).length === 0) {
+                const message = document.createElement("p");
+                message.textContent = "No chapters available yet.";
+                message.style.color = "#fff";
+                container.appendChild(message);
+                return;
+            }
+
+            for (const [chapter, file] of Object.entries(subjectChapters)) {
+                const btn = document.createElement("button");
+                btn.textContent = chapter;
+                btn.setAttribute("aria-label", `Select chapter ${chapter}`);
+
+                if (file === "") {
+                    // If the file path is empty, mark button as disabled
+                    btn.classList.add("disabled");
+                    btn.onclick = () => {
+                        // Do nothing on click
+                    };
+                } else {
+                    // If file path exists, enable navigation
+                    btn.onclick = () => {
+                        try {
+                            window.location.href = `Flashcards.html?file=${encodeURIComponent(file)}`;
+                        } catch (error) {
+                            console.error(`Error navigating to ${file}:`, error);
+                            alert("Unable to load chapter. Please try again.");
+                        }
+                    };
+                }
+
+                container.appendChild(btn);
+            }
+        }
+
+        // Generate buttons for each subject
+        generateButtons("physics", "physics-buttons");
+        generateButtons("chemistry", "chemistry-buttons");
+        generateButtons("maths", "maths-buttons");
+        generateButtons("biology", "biology-buttons");
+    </script>
+</body>
 </html>
