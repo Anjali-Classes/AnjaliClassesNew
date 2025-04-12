@@ -14,6 +14,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
         }
 
         body {
@@ -113,6 +114,21 @@
             left: 100%;
         }
 
+        button.disabled {
+            background: linear-gradient(135deg, #999, #ccc);
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+
+        button.disabled:hover {
+            transform: none;
+            box-shadow: none;
+        }
+
+        button.disabled::after {
+            display: none;
+        }
+
         @media (max-width: 768px) {
             .container {
                 padding: 1.5rem;
@@ -138,9 +154,6 @@
                 font-size: 0.9rem;
             }
         }
-            * {
-      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    }
     </style>
 </head>
 <body>
@@ -177,24 +190,19 @@
                 "Gravitation": "10th zone/gravitation.txt",
             },
             science2: {
-                "No chapters available yet.": "10th zone/maths1",
-                
+                "No chapters available yet.": "", // Empty path
             },
             maths1: {
-                "No chapters available yet.": "10th zone/maths1/algebra.txt",
-                // Add more chapters like "Calculus": "path/to/file"
+                "No chapters available yet.": "", // Empty path
             },
             maths2: {
-                "No chapters available yet.": "10th zone/maths2/geometry.txt",
-                // Add more chapters like "Statistics": "path/to/file"
+                "No chapters available yet.": "", // Empty path
             },
             history: {
-                "No chapters available yet.": "10th zone/history/ancient_history.txt",
-                // Add more chapters like "Modern History": "path/to/file"
+                "No chapters available yet.": "", // Empty path
             },
             geography: {
-                "No chapters available yet.": "10th zone/geography/physical_geography.txt",
-                // Add more chapters like "Human Geography": "path/to/file"
+                "No chapters available yet.": "", // Empty path
             }
         };
 
@@ -215,14 +223,25 @@
                 const btn = document.createElement("button");
                 btn.textContent = chapter;
                 btn.setAttribute("aria-label", `Select chapter ${chapter}`);
-                btn.onclick = () => {
-                    try {
-                        window.location.href = `Flashcards.html?file=${encodeURIComponent(file)}`;
-                    } catch (error) {
-                        console.error(`Error navigating to ${file}:`, error);
-                        alert("Unable to load chapter. Please try again.");
-                    }
-                };
+
+                if (file === "") {
+                    // If the file path is empty, mark button as disabled
+                    btn.classList.add("disabled");
+                    btn.onclick = () => {
+                        // Do nothing on click
+                    };
+                } else {
+                    // If file path exists, enable navigation
+                    btn.onclick = () => {
+                        try {
+                            window.location.href = `Flashcards.html?file=${encodeURIComponent(file)}`;
+                        } catch (error) {
+                            console.error(`Error navigating to ${file}:`, error);
+                            alert("Unable to load chapter. Please try again.");
+                        }
+                    };
+                }
+
                 container.appendChild(btn);
             }
         }
