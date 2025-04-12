@@ -1,0 +1,72 @@
+What is Gravitation?, Gravitation refers to the universal force of attraction between any two objects with mass.
+Who discovered gravitational force?, Sir Isaac Newton
+Why apple falls vertically downwards?, The earth attracts the apple towards its center, so it falls vertically downward.
+What is necessary to change the speed as well as the direction of motion of an object?, Force
+Which new branch of mathematics did Sir Isaac Newton discover?, Calculus
+Who was the first scientist to construct a reflecting telescope?, Sir Isaac Newton
+What is centripetal force?, A force acting on an object moving in a circle, directed towards the center of the circle.
+Centripetal means?, Centre seeking
+What is the formula for centripetal force?, F = \frac{mv^2}{r}
+What are examples of centripetal force?, 1) Moon orbiting Earth 2) Planets orbiting the Sun
+Who discovered the three laws of planetary motion?, Johannes Kepler
+What is an ellipse and how many focal points does it have?, An ellipse is a closed oval curve with two focal points.
+What is Kepler's first law of planetary motion?, The orbit of a planet is an ellipse with the Sun at one focus.
+What is Kepler's second law of planetary motion?, The line joining a planet and the Sun sweeps equal areas in equal time intervals.
+What is Kepler's third law of planetary motion?, The square of the orbital period is proportional to the cube of the semi-major axis.
+What is the mathematical expression for Kepler's third law?,   \frac{T^2}{R^3} = \text{constant}  
+What are the limitations of Kepler's laws?, They don't explain why planets obey these laws.
+Which scientist did Kepler's laws help?, Newton in formulating his theory of gravity.
+What is Newton's Universal Law of Gravitation?, Every mass attracts every other mass with a force proportional to the product of their masses and inversely proportional to the square of the distance between them.
+What is the mathematical expression for Newton's Law of Gravitation?,   F = G\frac{m_1m_2}{r^2}  
+What is G?, The universal gravitational constant.
+What is the value of G?,   6.674 \times 10^{-11} \text{N}\cdot\text{m}^2/\text{kg}^2  
+Who first experimentally measured G?, Henry Cavendish
+What is the SI unit of G?,   \text{N}\cdot\text{m}^2/\text{kg}^2  
+If the mass of one object is doubled, what happens to the gravitational force?, It doubles
+If the distance between two objects is doubled, what happens to the force?, It decreases to 1/4 of the original value
+If the distance is tripled, what happens to the force?, It decreases to 1/9 of the original value
+For two spherical masses, from where is the distance measured?, Center to center
+For non-spherical masses, from where is the distance measured?, Center of mass to center of mass
+What is center of mass?, The point where an object's mass can be considered concentrated.
+Where is the center of mass of a uniform sphere?, At its geometric center
+Where is the center of mass of a uniform object?, At its centroid
+Which force is weak but governs the universe?, Gravitational force
+Why can gravity govern the universe?, Because of the enormous masses involved
+Why do sea levels change?, Due to the Moon's gravitational pull
+What is Newton's second law of motion?,   F = ma  
+What is Earth's gravitational acceleration?, The acceleration due to Earth's gravity, denoted by   g  
+What is the direction of   g  ?, Toward Earth's center
+What is the formula for   g  ?,   g = \frac{GM}{R^2}  
+What is the standard value of   g  ?,   9.81 \text{m/s}^2  
+How does Earth's radius vary?, Largest at equator, smallest at poles
+How does   g   vary at Earth's surface?, Maximum at poles (  9.83 \text{m/s}^2  ), minimum at equator (  9.78 \text{m/s}^2  )
+How does   g   vary with altitude?, Decreases with height
+How does   g   vary with depth?, Decreases toward Earth's center, becoming zero at the center
+What is mass?, Quantity of matter in an object
+What is weight?, Force of gravity on an object
+What is the SI unit of mass?, kilogram (kg)
+What is the SI unit of weight?, newton (N)
+What determines mass?, Amount of matter (inertia)
+What are two differences between mass and weight?, 1) Mass is constant, weight varies with   g   2) Mass is scalar, weight is vector
+What is weight's direction?, Toward Earth's center
+What is the weight formula?,   W = mg  
+How does weight on Moon compare to Earth?,   W_{\text{moon}} = \frac{W_{\text{earth}}}{6}  
+What are gravitational waves called?, Ripples in spacetime
+Who predicted gravitational waves?, Einstein (1916)
+What detects gravitational waves?, LIGO (Laser Interferometer Gravitational-Wave Observatory)
+What is free fall?, Motion under gravity alone
+What is zero in free fall?, Initial vertical velocity
+What other force acts during free fall in air?, Air resistance
+Where does true free fall occur?, In vacuum
+What is the first kinematic equation for free fall?,   v = gt  
+What is the second kinematic equation for free fall?,   y = \frac{1}{2}gt^2  
+What is the third kinematic equation for free fall?,   v^2 = 2gy  
+When is   g   positive/negative?, Positive downward, negative upward
+Why are Moon and satellites in free fall?, Moving solely under Earth's gravity
+What is gravitational potential energy?,   U = -\frac{GMm}{r}  
+What is PE at infinity?, Zero
+What is escape velocity?, Minimum speed to leave a gravitational field
+What is the escape velocity formula?,   v_{\text{esc}} = \sqrt{\frac{2GM}{R}}  
+What Earth escape velocity is needed?, >11.2 km/s
+How does   g   in space station compare to Earth?, ~90% of surface   g  
+Why weightlessness in orbit?, Continuous free fall state
